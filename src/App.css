@@ -1,0 +1,416 @@
+/* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.hero-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #0b0214;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Background Setup */
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/background.png'); 
+  background-size: cover;
+  background-position: bottom center;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   FIXED TOP NAVIGATION BAR LAYOUT (UNTOUCHED)
+   ========================================================================== */
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 25px 4vw 0 4vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.logo-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-logo {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.brand-logo .plus {
+  color: #bc9aff;
+  font-size: 1.2rem;
+  vertical-align: super;
+  margin-left: 2px;
+}
+
+.brand-subtext {
+  font-size: 0.55rem;
+  color: #cbbada;
+  letter-spacing: 2.5px;
+  margin-top: 6px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+}
+
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  transition: all 0.2s ease;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+  color: #bc9aff;
+}
+
+.nav-btn {
+  background: transparent;
+  border: 1px solid #5a348b;
+  color: #ffffff;
+  padding: 8px 18px;
+  font-size: 0.7rem;
+  font-family: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background-color: rgba(90, 52, 139, 0.3);
+  border-color: #bc9aff;
+  box-shadow: 0 0 12px rgba(188, 154, 255, 0.3);
+}
+
+.bulb-icon {
+  font-size: 0.8rem;
+}
+
+/* ==========================================================================
+   CALIBRATED PATH WAYPOINTS & CHARACTER STRUCT (UNTOUCHED)
+   ========================================================================== */
+.character-container {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  animation: walkForwardPath 12s linear forwards;
+}
+
+@keyframes walkForwardPath {
+  0% {
+    bottom: 30vh; 
+    left: 27.5vw;
+    transform: translate(-50%, 0) scale(0.35);
+    opacity: 0;
+  }
+  4% {
+    opacity: 1;
+  }
+  20% {
+    bottom: 29vh; 
+    left: 24.5vw;
+    transform: translate(-50%, 0) scale(0.5);
+  }
+  40% {
+    bottom: 27vh; 
+    left: 33vw;
+    transform: translate(-50%, 0) scale(0.7);
+  }
+  60% {
+    bottom: 22vh; 
+    left: 32vw;
+    transform: translate(-50%, 0) scale(0.9);
+  }
+  85% {
+    bottom: 21vh; 
+    left: 54vw;
+    transform: translate(-50%, 0) scale(1.3);
+  }
+  100% {
+    bottom: 15.5vh; 
+    left: 63vw;
+    transform: translate(-50%, 0) scale(1.6);
+  }
+}
+
+.character {
+  width: 47px;          
+  height: 96px;        
+  background-image: url('./assets/chars-spritewalk.png');
+  background-repeat: no-repeat;
+  background-size: 192px 96px; 
+  background-position: -5px 0px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  animation: 
+    walkCycle 0.7s steps(4) infinite,
+    stopWalking 12s steps(1) forwards;
+}
+
+@keyframes walkCycle {
+  from { background-position: -5px 0px; }
+  to { background-position: -190px 0px; } 
+}
+
+@keyframes stopWalking {
+  0%, 99.9% {}
+  100% {
+    animation: none;
+    background-position: 0px 2px; 
+  }
+}
+
+/* ==========================================================================
+   UPDATED POSITIONING TO MATCH PICTURE 1 (RIGHT-CENTERED)
+   ========================================================================== */
+.content-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   
+  align-items: flex-end;     
+  padding-right: 11vw;       
+  pointer-events: none; 
+}
+
+.text-box {
+  max-width: 55vw;           
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;     
+  pointer-events: auto; 
+}
+
+/* ==========================================================================
+   RETRO PIXEL TYPOGRAPHY WITH NEON PURPLE GLOW (MATCHES PIC 2/3)
+   ========================================================================== */
+.pixel-title {
+  font-family: 'Press Start 2P', monospace; 
+  font-size: 2.2vw;          
+  line-height: 1.5;          
+  font-weight: normal;       
+  color: #ffffff;
+  text-align: right;
+  letter-spacing: 1px;       
+
+  text-shadow: 
+    0 0 5px rgba(255, 255, 255, 0.9),
+    0 0 15px rgba(188, 154, 255, 0.8),                    
+    0 0 30px rgba(138, 75, 247, 0.6);
+}
+
+.purple-gradient-text {
+  color: #bc9aff;            
+}
+
+.pixel-title .title-sparkle {
+  color: #bc9aff;
+  font-size: 1.5vw;
+  vertical-align: super;
+  margin-left: 4px;
+}
+
+.desc-wrapper {
+  margin-top: 4vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.main-desc {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.95vw; 
+  color: #ffffff;
+  line-height: 1.5;
+  text-align: right;
+  opacity: 0.95;
+  letter-spacing: 0.5px;
+}
+
+.sub-desc {
+  display: none; /* Hidden to match clean Picture 1 overlay space */
+}
+
+.btn-pill {
+  display: inline-block;
+  margin-top: 4vh;
+  padding: 12px 28px;
+  font-size: 0.7rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 50px;       
+  background: transparent;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.btn-pill:hover {
+  border-color: #ffffff;
+  background-color: #ffffff;
+  color: #0b0214;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+/* ==========================================================================
+   NEW: SEMICIRCULAR WHEEL MENU PROPERTIES (REPLACES OLD INDICATOR CODES)
+   ========================================================================== */
+.scroll-menu-container {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 440px;               /* Defines the total hoverable area width */
+  height: 220px;              /* Sets explicit vertical hitbox space */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 99;                
+  padding-bottom: 2.5vh;
+  pointer-events: auto;       /* Ensures the block senses mouse movement */
+}
+
+/* Base text indicator link wrapper */
+.scroll-indicator {
+  position: relative;
+  bottom: 0;
+  margin: 0 auto;
+  width: max-content;
+  z-index: 105;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #e5daf5;
+  font-size: 0.65rem;
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 2px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: color 0.3s ease;
+}
+
+.arrow-down {
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: #bc9aff;
+  animation: bounceDot 1.8s infinite;
+}
+
+/* Glow the central core indicator when menu expands */
+.scroll-menu-container:hover .scroll-indicator {
+  color: #ffffff;
+  opacity: 1;
+  text-shadow: 0 0 8px rgba(188, 154, 255, 0.8);
+}
+
+/* Wheel Layout Container */
+.radial-wheel {
+  position: absolute;
+  bottom: 45px;               
+  width: 100%;
+  height: 100%;
+  pointer-events: none;       
+}
+
+/* Base properties for individual nodes */
+.wheel-item {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 76px;
+  height: 76px;
+  margin-left: -38px;         
+  background: #0b0214;
+  border: 1px solid #5a348b;
+  border-radius: 50%;         
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.55rem;
+  font-weight: bold;
+  color: #cbbada;
+  opacity: 0;
+  pointer-events: none;
+  
+  /* Smooth deployment curve */
+  transition: 
+    transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+    opacity 0.3s ease, 
+    border-color 0.2s ease, 
+    box-shadow 0.2s ease;
+}
+
+/* Deploy options on container entry */
+.scroll-menu-container:hover .wheel-item {
+  opacity: 1;
+  pointer-events: auto;       
+}
+
+/* Fan positioning coordinate sets */
+.scroll-menu-container:hover .item-1 { transform: translate(-150px, -15px); }
+.scroll-menu-container:hover .item-2 { transform: translate(-105px, -105px); }
+.scroll-menu-container:hover .item-3 { transform: translate(0px, -150px); }
+.scroll-menu-container:hover .item-4 { transform: translate(105px, -105px); }
+.scroll-menu-container:hover .item-5 { transform: translate(150px, -15px); }
+
+/* Bright item glow animation on point focus */
+.wheel-item:hover {
+  color: #ffffff;
+  border-color: #bc9aff;
+  background-color: #160728;
+  box-shadow: 
+    0 0 12px rgba(188, 154, 255, 0.7),
+    0 0 25px rgba(138, 75, 247, 0.4);
+}
+
+@keyframes bounceDot {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(5px); opacity: 1; }
+}
