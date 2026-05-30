@@ -38,26 +38,41 @@ function App() {
       {/* DESIGN OVERLAY INTERFACE (Layout like Picture 1) */}
       <div className="content-overlay">
         <div className="text-box">
-          <h1 className="pixel-title">
-            Every engineer <br />
-            <span className="purple-gradient-text">starts somewhere<span className="title-sparkle"></span></span>
-          </h1>
-          <div className="divider-line"></div>
-          <p className="main-desc">
-            A little unsure. A lot curious. <br />
-            Step by step, we build confidence, <br />
-            create impact and shape the future.
-          </p>
-          <p className="sub-desc">This is where the journey begins.</p>
-          <a href="#journey" className="btn-pill">
-            BEGIN YOUR JOURNEY &rarr;
-          </a>
-        </div>
+          {/* Line 1 & 2: The grand title pieces */}
+  <h1 className="pixel-title reveal-line line-1">Every engineer</h1>
+  <h1 className="pixel-title reveal-line line-2" style={{ marginTop: '0.5vh' }}>
+    <span className="purple-gradient-text">starts somewhere</span>
+  </h1>
+  
+  <div className="divider-line"></div>
+  
+  {/* Lines 3, 4, 5: The body description split up */}
+  <p className="main-desc reveal-line line-3" style={{ marginTop: '4vh' }}>A little unsure. A lot curious.</p>
+  <p className="main-desc reveal-line line-4">Step by step, we build confidence,</p>
+  <p className="main-desc reveal-line line-5">create impact and shape the future.</p>
+  
+  {/* Line 6: The Action Pill Button */}
+  <a href="#journey" className="btn-pill reveal-line line-6">
+    BEGIN YOUR JOURNEY &rarr;
+  </a>
+</div>
+          
       </div>
       {/* Interactive Radial Scroll Menu Layout */}
       <div className="scroll-menu-container">
         {/* Semicircular Wheel Options */}
         <div className="radial-wheel">
+           {/* Purple Halo */}
+  <svg
+    className="halo-svg"
+    viewBox="0 0 500 250"
+  >
+    <path
+      d="M 50 220
+         A 200 200 0 0 1 450 220"
+      className="halo-path"
+    />
+  </svg>
           <a href="#about" className="wheel-item item-1"><span>ABOUT</span></a>
           <a href="#events" className="wheel-item item-2"><span>EVENTS</span></a>
           <a href="#projects" className="wheel-item item-3"><span>PROJECTS</span></a>
@@ -67,7 +82,9 @@ function App() {
 
         {/* FIXED: Moved inside the scroll-menu-container so it anchors and triggers hovers properly */}
         <div className="scroll-indicator">
-          <span>SCROLL</span>
+            <div className="scroll-button">
+          <span>SCROLL</span>  </div>
+
           <div className="arrow-down">↓</div>
         </div>
       </div>
